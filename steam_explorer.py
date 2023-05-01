@@ -338,7 +338,7 @@ elif menu == "Gráficos":
     #GRAFICO 50M
     st.plotly_chart(cincuentam, use_column_width=True)
     # Mostrar el gráfico distri-desa
-    st.plotly_chart(distri, use_column_width=True)
+    st.plotly_chart(distri, use_container_width=True)
     #GRAFICO DISTRIBUIDORA PRECIOMEDIO
     st.plotly_chart(distrimedio)
     #GRAFICO DOBLE DISTRIBUIDORA PRECIO MEDIO Y JUEGOS
