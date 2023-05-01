@@ -330,7 +330,26 @@ elif menu == "Gráficos":
     # Aquí puedes agregar el código para el análisis de los datos
 
     #GRAFICO DE PINCHOS PRECIO MEDIO - AÑO
-    st.plotly_chart(ari)
+    # Cargar el modelo ARIMA desde el archivo .pkl
+    with open('data/modelo_arima.pkl', 'rb') as f:
+        modelo_arima_fit = pickle.load(f)
+
+    # Obtener la predicción para los próximos 5 años
+    prediccion = modelo_arima_fit.predict(start=len(precio_anual), end=len(precio_anual)+1, typ='levels')
+
+    # Crear un rango de fechas para la predicción (solo los próximos dos años)
+    fechas_pred = pd.date_range(start=str(precio_anual.index[-1]), periods=2, freq='AS')
+
+    # Obtener la predicción completa
+    prediccion_completa = modelo_arima_fit.predict(start=precio_anual.index[0], end=precio_anual.index[-1], typ='levels')
+
+    # Crear el gráfico con Plotly Express
+    fig = px.line()
+    fig.add_scatter(x=precio_anual.index, y=precio_anual, name='Datos')
+    fig.add_scatter(x=fechas_pred, y=prediccion, name='Predicción a futuro', mode='lines+markers')
+    fig.add_scatter(x=precio_anual.index, y=prediccion_completa, name='Predicción completa', mode='lines+markers')
+    fig.update_layout(title='Precio promedio de los videojuegos por año', xaxis_title='Año', yaxis_title='Precio promedio')
+    st.plotly_chart(fig)
     #GRAFICO DE +99.00$ Por fecha y jugadores
     st.plotly_chart(noventainueve, use_container_width=True)
     #GRAFICO DE 100M
