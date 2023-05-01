@@ -146,6 +146,25 @@ diezdis.update_layout(
     height=500,
     autosize=True
 )
+#GRÁFICO PARA Relación entre Desarrollador(es) y Distribuidor(es)
+dfjunto['dev_pub_relation'] = dfjunto.apply(lambda row: 'igual' if row['Developer(s)'] == row['Publisher(s)'] else 'distinto', axis=1)
+# Obtener los datos de la relación entre desarrollador(es) y publicador(es)
+counts = dfjunto['dev_pub_relation'].value_counts().reset_index()
+counts.columns = ['relacion', 'conteo']
+
+# Definir colores personalizados
+colors = ['rgb(91,209,246)', '#FF6961']
+
+# Crear gráfico de pastel
+distri = px.pie(counts, values='conteo', names='relacion', color='relacion', color_discrete_sequence=colors,
+            hole=0.6, labels={'conteo': 'Porcentaje'})
+
+# Configurar estilo y leyenda
+distri.update_layout(title='Relación entre Desarrollador(es) y Distribuidor(es)', title_font_size=20,
+                legend_title='Relación', legend_traceorder='reversed')
+distri.update_traces(textposition='inside', textinfo='percent+label')
+
+
 #COSAS PARA LA REGRESION DE PRECIO--------------------------------------------------------->
 
 # Función para formatear los valores de Owners_max en miles o millones
