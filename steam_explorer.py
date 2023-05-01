@@ -25,6 +25,7 @@ import requests
 from bs4 import BeautifulSoup
 from statsmodels.tsa.arima.model import ARIMA
 import matplotlib.pyplot as plt
+import re
 
 #------------------ COSAS QUE PODEMOS USAR EN TODA NUESTRA APP ----------------
 #------------------ CONFIGURACIÓN DE PÁGINA ----------------
@@ -371,7 +372,11 @@ if menu =="Predicción de Precio":
     simulacion = st.sidebar.selectbox('Simulación', ['No', 'Sí'])
     indie = st.sidebar.selectbox('Indie', ['No', 'Sí'])
     release_year = st.sidebar.text_input('Año de lanzamiento', '2022')
-    
+    # Validar año de lanzamiento
+    valid_year = re.match(r'^\d{4}$', release_year)
+    if not valid_year:
+        st.error('Por favor, introduzca un año válido de 4 dígitos.')
+        st.stop()
     
 
     # Convertir los valores de entrada en un formato adecuado para la predicción
