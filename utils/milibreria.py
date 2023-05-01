@@ -165,8 +165,7 @@ distri.update_layout(
     title_font_size=20,
     legend_title='Relación',
     legend_traceorder='reversed',
-    width=600,  # ajustar el ancho de la figura
-    height=400  # ajustar la altura de la figura
+
 )
 distri.update_traces(textposition='inside', textinfo='percent+label')
 
