@@ -351,6 +351,8 @@ elif menu == "Gráficos":
     fig.add_scatter(x=precio_anual.index, y=prediccion_completa, name='Predicción completa', mode='lines+markers')
     fig.update_layout(title='Precio promedio de los videojuegos por año', xaxis_title='Año', yaxis_title='Precio promedio')
     st.plotly_chart(fig)
+#Serie temmporal en meses
+    st.plotly_chart(meses)    
 
     #GRAFICO DE +99.00$ Por fecha y jugadores
     st.plotly_chart(noventainueve, use_container_width=True)
