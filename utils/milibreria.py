@@ -160,9 +160,16 @@ distri = px.pie(counts, values='conteo', names='relacion', color='relacion', col
             hole=0.6, labels={'conteo': 'Porcentaje'})
 
 # Configurar estilo y leyenda
-distri.update_layout(title='Relación entre Desarrollador(es) y Distribuidor(es)', title_font_size=20,
-                legend_title='Relación', legend_traceorder='reversed')
+distri.update_layout(
+    title='Relación entre Desarrollador(es) y Distribuidor(es)',
+    title_font_size=20,
+    legend_title='Relación',
+    legend_traceorder='reversed',
+    width=500,  # ajustar el ancho de la figura
+    height=400  # ajustar la altura de la figura
+)
 distri.update_traces(textposition='inside', textinfo='percent+label')
+
 
 
 #COSAS PARA LA REGRESION DE PRECIO--------------------------------------------------------->
