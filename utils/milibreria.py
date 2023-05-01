@@ -210,3 +210,33 @@ df_futuro = pd.DataFrame({'Release year': fechas_futuras, 'Price': prediccion_fu
 
 # Obtener la predicción completa
 prediccion_completa = modelo_arima_fit.predict(start=precio_anual.index[0], end=precio_anual.index[-1], typ='levels')
+#SERIE TEMPORAL DE MESES-------------
+    # Cargar el modelo guardado
+with open('data/modelo_arima_meses.pkl', 'rb') as f:
+    modelo_arima_fit = pickle.load(f)
+    # Dropeamos el 2023
+arima = arima.drop(arima[arima["Release Month"] > "2023"].index)
+
+# Convertir la columna "Release Month" a tipo fecha
+arima['Release Month'] = pd.to_datetime(arima['Release Month'])
+
+# Agrupar los datos por mes y calcular la media de los precios
+precio_mensual = arima.groupby('Release Month')['Price'].mean()
+
+# Obtener la predicción para los próximos 12 meses
+prediccion_futura = modelo_arima_fit.forecast(steps=12)
+
+# Crear un rango de fechas para los próximos doce meses
+fechas_futuras = pd.date_range(start=str(precio_mensual.index[-1]), periods=12, freq='MS')
+
+# Obtener la predicción completa
+prediccion_completa = modelo_arima_fit.predict(start=precio_mensual.index[0], end=precio_mensual.index[-1], typ='levels')
+
+# Crear el gráfico con Plotly Express
+meses = px.line()
+meses.add_scatter(x=precio_mensual.index, y=precio_mensual, name='Datos', line_width=1)
+meses.add_scatter(x=fechas_futuras, y=prediccion_futura, name='Predicción a futuro', mode='lines', line_width=1)
+meses.add_scatter(x=precio_mensual.index, y=prediccion_completa, name='Predicción completa', mode='lines', line_width=1)
+
+meses.update_layout(title='Precio promedio de los videojuegos por mes', xaxis_title='Mes', yaxis_title='Precio promedio',
+            legend=dict(orientation="h", y=-0.2))
