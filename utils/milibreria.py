@@ -210,8 +210,3 @@ df_futuro = pd.DataFrame({'Release year': fechas_futuras, 'Price': prediccion_fu
 
 # Obtener la predicción completa
 prediccion_completa = modelo_arima_fit.predict(start=precio_anual.index[0], end=precio_anual.index[-1], typ='levels')
-
-# Graficar los datos originales, la predicción a futuro y la predicción completa
-ari = px.line(x=precio_anual.index, y=precio_anual, color_discrete_sequence=['blue'], labels={'x':'Año', 'y':'Precio promedio'}, title='Serie temporal promedio de precio/año')
-ari.add_trace(px.line(df_futuro, x='Release year', y='Price', color_discrete_sequence=['red'], labels={'x':'Año', 'y':'Precio promedio', 'line_group':'Predicción a futuro'}).data[0])
-ari.add_trace(px.line(x=precio_anual.index, y=prediccion_completa, color_discrete_sequence=['green'], labels={'x':'Año', 'y':'Precio promedio', 'line_group':'Predicción completa'}).data[0])
