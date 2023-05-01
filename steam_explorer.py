@@ -333,6 +333,8 @@ elif menu == "Gráficos":
     # Cargar el modelo ARIMA desde el archivo .pkl
     with open('data/modelo_arima.pkl', 'rb') as f:
         modelo_arima_fit = pickle.load(f)
+        # Crear un rango de fechas para la predicción (solo los próximos dos años)
+    fechas_pred = pd.date_range(start=str(precio_anual.index[-1]), periods=2, freq='AS')
     # Agrupar los datos por año y calcular la media de los precios
     precio_anual = arima.groupby('Release year')['Price'].mean()
     # Obtener la predicción para los próximos 5 años
