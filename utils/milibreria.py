@@ -194,4 +194,24 @@ conclusiones = [
     ]
 
 #SERIE TEMPORAL ---------------------------------------------------------------------------------
+# Cargar el modelo ARIMA desde el archivo .pkl
+with open('data/modelo_arima.pkl', 'rb') as archivo:
+    modelo_arima_fit = pickle.load(archivo)
+arima['Release year'] = pd.to_datetime(arima['Release year'], format='%Y-%m-%d')
+precio_anual = arima.groupby('Release year')['Price'].mean()
+# Obtener la predicción para los próximos 12 meses
+prediccion_futura = modelo_arima_fit.forecast(steps=2)
 
+# Crear un rango de fechas para los próximos dos años
+fechas_futuras = pd.date_range(start=str(precio_anual.index[-1]), periods=2, freq='A')
+
+# Crear un DataFrame con las fechas futuras y la predicción a futuro
+df_futuro = pd.DataFrame({'Release year': fechas_futuras, 'Price': prediccion_futura[0]})
+
+# Obtener la predicción completa
+prediccion_completa = modelo_arima_fit.predict(start=precio_anual.index[0], end=precio_anual.index[-1], typ='levels')
+
+# Graficar los datos originales, la predicción a futuro y la predicción completa
+ari = px.line(x=precio_anual.index, y=precio_anual, color_discrete_sequence=['blue'], labels={'x':'Año', 'y':'Precio promedio'}, title='Serie temporal promedio de precio/año')
+ari.add_trace(px.line(df_futuro, x='Release year', y='Price', color_discrete_sequence=['red'], labels={'x':'Año', 'y':'Precio promedio', 'line_group':'Predicción a futuro'}).data[0])
+ari.add_trace(px.line(x=precio_anual.index, y=prediccion_completa, color_discrete_sequence=['green'], labels={'x':'Año', 'y':'Precio promedio', 'line_group':'Predicción completa'}).data[0])
