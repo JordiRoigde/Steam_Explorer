@@ -79,7 +79,7 @@ st.image("img/banner_2.jpg")
 # Creamos el Menú horizontal
 menu = option_menu(
     menu_title=None,
-    options=["Inicio", "Comparaciones", "Gráficos", "PowerBi", "Predicción de Precio", "Predicción de Usuarios máximos","Conclusiones"],
+    options=["Inicio", "Comparaciones", "Gráficos", "PowerBi", "Predicción de precio", "Predicción de usuarios","Conclusiones"],
     icons= ["house", "list", "upload", "clipboard-plus", "bell", "star","check"],
     default_index=0,
     orientation="horizontal"
@@ -382,7 +382,7 @@ if menu == "PowerBi":
 
 ######################### REGRESIÓN ################################
 
-if menu =="Predicción de Precio":
+if menu =="Predicción de precio":
     st.markdown("<h2 style='text-align: center;  background-color: #ff4b4b ; color: #FFFFFF;'>Regresión de Precio</h2>" ,unsafe_allow_html=True) #título
     st.sidebar.image('img/barra3.png')
     # Definir los controles del sidebar
@@ -461,7 +461,7 @@ if menu =="Predicción de Precio":
             unsafe_allow_html=True
         )
 ######################### CLASIFICACIÓN ################################
-if menu =="Predicción de Usuarios máximos":
+if menu =="Predicción de usuarios":
     st.markdown("<h2 style='text-align: center;  background-color: #ff4b4b ; color: #FFFFFF;'>Clasificación de usuarios</h2>" ,unsafe_allow_html=True) #título
     st.sidebar.image('img/barra4.png')
     # Crear la barra lateral
