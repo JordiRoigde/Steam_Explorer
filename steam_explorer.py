@@ -27,7 +27,6 @@ from statsmodels.tsa.arima.model import ARIMA
 import matplotlib.pyplot as plt
 import re
 
-#------------------ COSAS QUE PODEMOS USAR EN TODA NUESTRA APP ----------------
 #------------------ CONFIGURACIÓN DE PÁGINA ----------------
 
 st.set_page_config(page_title="STEAM GAMES | JORDI ROIG",
@@ -94,7 +93,7 @@ menu = option_menu(
 if menu =="Inicio":
     st.markdown("<h2 style='text-align: center;  background-color: #ff4b4b ; color: #FFFFFF;'>STEAM EXPLORER</h2>" ,unsafe_allow_html=True) #título
 
-    #Comienza el párrafo introductorio
+    #Comienza el Primer párrafo
     st.markdown(
     """
     <div style="border: 0px solid #ff4b4b; padding: 10px; background-color: rgba(254, 143, 143, 0); color: #FFFFFF; text-align: justify;">
@@ -106,7 +105,9 @@ if menu =="Inicio":
     </div>
     """, unsafe_allow_html=True)
     st.image("img/fondo_2.jpg")  #imagen Proba1
-
+    st.write("<div style='text-align: right; font-size: small'>Imagen obtenida de www.hobbyconsolas.com</div>", unsafe_allow_html=True)
+    st.write("")
+    st.write("")
 
     #Título primer párrafo
     st.markdown("<h2 style='text-align: center;  background-color: #ff4b4b ; color: #FFFFFF;'>VIDEOJUEGOS Y LA INDUSTRIA</h2>" ,unsafe_allow_html=True)
@@ -163,7 +164,7 @@ if menu =="Inicio":
     # Buscamos los mini-títulos utilizando el atributo de clase 'mw-headline'
     mini_titulos = soup.find_all('span', {'class': 'mw-headline'})
 
-    # Almacenamos los mini-títulos que cumplen los criterios en una lista
+    # jugamos con los mini títulos
     mini_titulos_list = []
     for mini_titulo in mini_titulos:
         # Verificamos si el mini-título comienza con un número
@@ -186,7 +187,7 @@ if menu =="Inicio":
 
 
 
-    #Trabajamos aquí el sidebar del menú introducción
+    #SLIDER INTRO
 
     mi_sidebar= False
     if(st.button("Primer  videojuego 🎮" )):
@@ -324,7 +325,7 @@ if menu == "Comparaciones":
     # Crear el gráfico pie
     fig = px.pie(df_top3, values="Price", names="Game", title=f"Los 3 juegos más caros de tu filtro y de la categoría {categoria}")
     st.plotly_chart(fig)
-
+######################### GRÁFICOS ################################
 elif menu == "Gráficos":
     st.markdown("<h2 style='text-align: center; background-color: #ff4b4b; color: #FFFFFF;'>Análisis</h2>", unsafe_allow_html=True)
     # Aquí puedes agregar el código para el análisis de los datos
@@ -368,6 +369,8 @@ elif menu == "Gráficos":
     st.plotly_chart(pmedio)
     # TOP10DISTRIBUIDORAS PLAYERS MAX
     st.plotly_chart(diezdis, use_column_width=True)
+        
+######################### POWERBI ################################
 
 if menu == "PowerBi":
     st.markdown("<h2 style='text-align: center; background-color: #ff4b4b; color: #FFFFFF;'>Panel de PowerBi</h2>", unsafe_allow_html=True)
@@ -377,7 +380,7 @@ if menu == "PowerBi":
     )
 
 
-
+######################### REGRESIÓN ################################
 
 if menu =="Predicción de Precio":
     st.markdown("<h2 style='text-align: center;  background-color: #ff4b4b ; color: #FFFFFF;'>Regresión de Precio</h2>" ,unsafe_allow_html=True) #título
@@ -457,6 +460,7 @@ if menu =="Predicción de Precio":
             """,
             unsafe_allow_html=True
         )
+######################### CLASIFICACIÓN ################################
 if menu =="Predicción de Jugadores":
     st.markdown("<h2 style='text-align: center;  background-color: #ff4b4b ; color: #FFFFFF;'>Clasificación de Jugadores</h2>" ,unsafe_allow_html=True) #título
     st.sidebar.image('img/barra4.png')
@@ -525,6 +529,8 @@ if menu =="Predicción de Jugadores":
             """,
             unsafe_allow_html=True
         )
+        
+######################### CONCLUSIONES Y DESPEDIDA ################################
 if menu =="Conclusiones":
     st.markdown("<h2 style='text-align: center;  background-color: #ff4b4b ; color: #FFFFFF;'>CONCLUSIONES</h2>" ,unsafe_allow_html=True) #título
 
