@@ -541,8 +541,15 @@ if menu =="Conclusiones":
     for i, c in enumerate(conclusiones):
         st.markdown(f"<h3 style='margin-bottom: 10px;'><span style='background-color: #ff4b4b; color: #FFFFFF; padding: 5px; border-radius: 5px;'>{i+1}</span><span style='margin-left: 10px;'></span><span style='text-align: justify;'>{c}</span></h3>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
-
+#BARRA SEPARATORIA Y LUGARES DE PNGS
+    st.markdown("""<hr style="height:1px;background-color: #ff4b4b; align:left" /> """, unsafe_allow_html=True)
     
+
+    with st.container():
+        st.write("<div style='text-align: center; color: white;'>Los PNG'S de esta presentación són de: <a href='https://www.freepng.es' target='_blank'>www.freepng.es</a></div>", unsafe_allow_html=True)
+        st.write("<div style='text-align: center; color: white;'>Herramienta de creación de nombres e imágenes: <a href='https://rezuaq.be/new-area/image-creator' target='_blank'>https://rezuaq.be/new-area/image-creator</a></div>", unsafe_allow_html=True)
+    st.markdown("""<hr style="height:1px;background-color: #ff4b4b; align:left" /> """, unsafe_allow_html=True)
+
     # mostrar la imagen "game_over"
     barra_conc = st.image('img/barra_conc.png')
     game_over_img = st.image('img/game_over.png')
