@@ -383,13 +383,13 @@ if menu == "PowerBi":
 ######################### REGRESIÓN ################################
 
 if menu =="Predicción de precio":
-    st.markdown("<h2 style='text-align: center;  background-color: #ff4b4b ; color: #FFFFFF;'>Regresión de Precio</h2>" ,unsafe_allow_html=True) #título
+    st.markdown("<h2 style='text-align: center;  background-color: #ff4b4b ; color: #FFFFFF;'>Regresión de precio</h2>" ,unsafe_allow_html=True) #título
     st.sidebar.image('img/barra3.png')
     # Definir los controles del sidebar
     
     st.sidebar.header('Parámetros de entrada')
     developer = st.sidebar.selectbox('Desarrollador(es)', pyca_filtered['Developer(s)'].unique())
-    owners_max = st.sidebar.selectbox('Número máximo de jugadores', pyca_filtered['Owners_max'].unique())
+    owners_max = st.sidebar.selectbox('Número máximo de usuarios', pyca_filtered['Owners_max'].unique())
     acción = st.sidebar.selectbox('Acción', ['No', 'Sí'])
     aventura = st.sidebar.selectbox('Aventura', ['No', 'Sí'])
     deportes = st.sidebar.selectbox('Deportes', ['No', 'Sí'])
@@ -523,7 +523,7 @@ if menu =="Predicción de usuarios":
                 margin-right: auto;
                 width: 60%;
             ">
-                <div style="font-size: 30px; font-weight: 700; margin-bottom: 20px; color: #ffffff;">El número estimado de jugadores es:</div>
+                <div style="font-size: 30px; font-weight: 700; margin-bottom: 20px; color: #ffffff;">El número estimado de usuarios es:</div>
                 {styled_text}
             </div>
             """,
