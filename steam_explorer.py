@@ -327,10 +327,10 @@ if menu == "Comparaciones":
     st.plotly_chart(fig)
 ######################### GRÁFICOS ################################
 elif menu == "Gráficos":
-    st.markdown("<h2 style='text-align: center; background-color: #ff4b4b; color: #FFFFFF;'>Análisis</h2>", unsafe_allow_html=True)
-    # Aquí puedes agregar el código para el análisis de los datos
+    st.markdown("<h2 style='text-align: center; background-color: #ff4b4b; color: #FFFFFF;'>Análisis y Gráficos</h2>", unsafe_allow_html=True)
+    
 
-    #GRAFICO DE PINCHOS PRECIO MEDIO - AÑO
+    #SERIE TEMPORAL
     # Cargar el modelo ARIMA desde el archivo .pkl
 # Cargar el modelo ARIMA desde el archivo .pkl
     with open('data/modelo_arima.pkl', 'rb') as f:
@@ -350,7 +350,7 @@ elif menu == "Gráficos":
     fig.add_scatter(x=precio_anual.index, y=precio_anual, name='Datos')
     fig.add_scatter(x=fechas_pred, y=prediccion, name='Predicción a futuro', mode='lines+markers')
     fig.add_scatter(x=precio_anual.index, y=prediccion_completa, name='Predicción completa', mode='lines+markers')
-    fig.update_layout(title='Precio promedio de los videojuegos por año', xaxis_title='Año', yaxis_title='Precio promedio')
+    fig.update_layout(title='Serie temporal Precio/Año,  ARIMA - P(0) D(1) Q(0) ', xaxis_title='Año', yaxis_title='Precio promedio')
     st.plotly_chart(fig)
 #Serie temmporal en meses
     st.plotly_chart(meses)    
