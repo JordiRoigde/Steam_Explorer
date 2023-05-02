@@ -76,7 +76,7 @@ cincuentam = px.scatter(df_50, x="Price", y="Game", color="Game", hover_name="Ga
                  hover_data=["Release date"],
                  size="Owners_max", size_max=20,
                  labels={"Game": "Juegos", "Price": "Precio"},
-                 title="Lista de juegos de más de 50M de jugadores")
+                 title="Lista de juegos de más de 50M de usuarios")
 # Ajustar el diseño de la gráfica
 cincuentam.update_layout(
     showlegend=False,
