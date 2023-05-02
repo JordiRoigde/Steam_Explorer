@@ -238,5 +238,5 @@ meses.add_scatter(x=precio_mensual.index, y=precio_mensual, name='Datos', line_w
 meses.add_scatter(x=fechas_futuras, y=prediccion_futura, name='Predicción a futuro', mode='lines', line_width=1)
 meses.add_scatter(x=precio_mensual.index, y=prediccion_completa, name='Predicción completa', mode='lines', line_width=1)
 
-meses.update_layout(title='Precio promedio de los videojuegos por mes', xaxis_title='Mes', yaxis_title='Precio promedio',
+meses.update_layout(title='Serie temporal Precio/Meses,  ARIMA - P(0) D(1) Q(0)', xaxis_title='Mes', yaxis_title='Precio promedio',
             legend=dict(orientation="h", y=-0.2))
