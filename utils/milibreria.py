@@ -51,9 +51,9 @@ cienm = px.bar(dfjunto_topmax, x="Game", y="Owners_max", color="Release date")
 # Eliminar la leyenda
 cienm.update_layout(
     showlegend=False,
-    title="Juegos con más de 100M de jugadores y fecha",
+    title="Juegos con más de 100M de usuarios y fecha",
     xaxis_title="Juego",
-    yaxis_title="Jugadores máximos"
+    yaxis_title="Usuarios máximos"
 )
 #------------------------------AQUI LOS GRAFICOS PARA ANALISIS CAMBIANTES---------------------------------------
 def update_dataframe(df, publisher):
@@ -92,8 +92,8 @@ noventainueve = px.scatter(df_filtered, x="Price", y="Release date", size="Owner
                  color_continuous_scale="Spectral")
 
 # Títulos
-noventainueve.update_layout(title="Juegos de más de 99.99$ por fecha y jugadores máximos",
-                  xaxis_title="Precio", yaxis_title="Fecha", coloraxis_colorbar_title="Jugadores máximos")
+noventainueve.update_layout(title="Juegos de más de 99.99$ por fecha y usuarios máximos",
+                  xaxis_title="Precio", yaxis_title="Fecha", coloraxis_colorbar_title="Usuarios máximos")
 #GRÁFICO DE DISTRIBUIDORA PRECIO MEDIO--------------------------------------------------------
 dfjunto_precio = dfjunto[dfjunto['Price'] != 0.00]
 # Obtener el número de juegos publicados por cada editor
@@ -139,9 +139,9 @@ diezdis = go.Figure(go.Bar(
     )
 ))
 diezdis.update_layout(
-    title='Top 10 distribuidoras por jugadores máximos',
+    title='Top 10 distribuidoras por usuarios máximos',
     yaxis_title='Distribuidoras',
-    xaxis_title='Jugadores máximos',
+    xaxis_title='Usuarios máximos',
     font=dict(size=12),
     height=500,
     autosize=True
